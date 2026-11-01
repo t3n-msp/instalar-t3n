@@ -6,8 +6,11 @@ sem PowerShell, o que faltar entre o Git for Windows, o Claude desktop e o Claud
 No Prompt de Comando (cmd):
 
 ```bat
-curl -fsSLo "%TEMP%\instalar-t3n.cmd" https://raw.githubusercontent.com/t3n-msp/instalar-t3n/main/instalar-t3n.cmd && "%TEMP%\instalar-t3n.cmd"
+curl -fsSL --ssl-revoke-best-effort -o "%TEMP%\instalar-t3n.cmd" https://raw.githubusercontent.com/t3n-msp/instalar-t3n/main/instalar-t3n.cmd && "%TEMP%\instalar-t3n.cmd"
 ```
+
+O `--ssl-revoke-best-effort` só tolera um servidor de revogação fora do alcance (comum em rede
+corporativa); o certificado continua sendo conferido.
 
 Atrás de um proxy, passe o proxy aos dois: `curl -x http://<proxy>:<porta> ...` e
 `instalar-t3n.cmd /proxy http://<proxy>:<porta>/`. Sem o `/proxy`, o instalador usa o proxy
